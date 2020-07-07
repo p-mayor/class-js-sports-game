@@ -3,8 +3,11 @@ class Team {
         this.name = name
         this.shots = 0
         this.goals = 0
+        this.generate()
+    }
+    
+    generate() {
         this.teamElement = document.createElement('div')
-
         this.header = document.createElement('h1')
         this.header.append(this.name)
 
