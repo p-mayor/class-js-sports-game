@@ -57,41 +57,46 @@ class Game {
         this.team1 = team1
         this.team2 = team2
         this.stadium = stadium
+
         this.generateGameElement()
+        this.addStyles()
         targetElement.append(this.gameElement)
     }
 
     generateGameElement() {
         this.gameElement = document.createElement('div')
-        this.gameElement.style.border = "1px solid black"
-        this.gameElement.style.textAlign = "center"
 
         this.headerElement = document.createElement('h1')
-        this.headerElement.style.textAlign = "center"
         this.headerElement.append("Welcome to " + this.stadium)
 
         this.generateTeamsElement()
-
         this.gameElement.append(this.headerElement, this.teamsElement)
     }
 
     generateTeamsElement(){
         this.teamsElement = document.createElement('div')
-        this.teamsElement.style.display = "flex"
-        this.teamsElement.style.justifyContent = "space-around"
-        
         this.middleElement = document.createElement('div')
-        this.middleElement.style.display = "flex"
-        this.middleElement.style.flexDirection = "column"
-        this.middleElement.style.justifyContent = "space-around"
-        
+
         this.resetButton = document.createElement('button')
         this.resetButton.append("Reset")
         this.resetButton.addEventListener("click", () => this.resetHandler())
 
         this.middleElement.append("vs", this.resetButton)
-        
         this.teamsElement.append(this.team1.teamElement, this.middleElement, this.team2.teamElement)
+    }
+
+    addStyles(){
+        this.gameElement.style.border = "1px solid black"
+        this.gameElement.style.textAlign = "center"
+
+        this.teamsElement.style.display = "flex"
+        this.teamsElement.style.justifyContent = "space-around"
+
+        this.headerElement.style.textAlign = "center"
+        
+        this.middleElement.style.display = "flex"
+        this.middleElement.style.flexDirection = "column"
+        this.middleElement.style.justifyContent = "space-around"
     }
 
     resetHandler() {
